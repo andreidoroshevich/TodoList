@@ -18,9 +18,10 @@ const TaskList: FC<TaskListPropsType> = (
     // const tasks = props.tasks
 
     const tasksJSXElements = tasks.map(t => {
+        const onClickRemoveTask = () => removeTask(t.id)
         return (
             <li key={t.id}><input type="checkbox" checked={t.isDone}/> <span>{t.title}</span>
-                <button onClick={()=>removeTask(t.id)}>x</button>
+                <button onClick={onClickRemoveTask}>x</button>
             </li>
 
         )

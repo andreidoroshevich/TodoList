@@ -29,7 +29,7 @@ function App() {
     const removeTask = (id: number) => {
         debugger
         const filteredTasks = tasks.filter(t => t.id !== id)
-        setTasks(filteredTasks)
+        setTasks(filteredTasks) //всегда только обновленные данные
     }
 
     //UI:
