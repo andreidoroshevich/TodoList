@@ -27,21 +27,17 @@ function App() {
         const filteredTasks = tasks.filter(t => t.id !== id)
         setTasks(filteredTasks) //всегда только обновленные данные
     }
-
     const addTask = (title: string) => {
         const newTask: TaskType = {
             id: v1(),
             title: title,
             isDone: false
         }
-                setTasks([newTask, ...tasks])
+        setTasks([newTask, ...tasks])
     }
-
-
     const changeFilter = (filter: FilterType) => {
         setFilter(filter)
     }
-
     const [filter, setFilter] = useState<FilterType>('All')
     let tasksForTodoList;
     switch (filter) {
@@ -55,6 +51,10 @@ function App() {
             tasksForTodoList = tasks
     }
 
+    const changeStatus = (id: string, isDone: boolean) => {
+        const updatedTask = tasks.map(t => t.id === id ? {...t, isDone} : t)
+        setTasks(updatedTask)
+    }
 
     //UI:
     return (
@@ -65,6 +65,8 @@ function App() {
                 removeTask={removeTask}
                 addTask={addTask}
                 changeFilter={changeFilter}
+                changeStatus={changeStatus}
+                filter={filter}
             />
         </div>
     );

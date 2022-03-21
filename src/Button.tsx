@@ -1,15 +1,16 @@
 import React from 'react';
-import {FilterType} from "./App";
 
 type ButtonPropsType = {
     title: string
     onClickHandler: ()=>void
+    className?: string
+
 }
 
 const Button = (props: ButtonPropsType) => {
     return (
         <>
-            <button onClick={props.onClickHandler}>{props.title}</button>
+            <button className={props.className} onClick={props.onClickHandler}>{props.title}</button>
         </>
     );
 };
